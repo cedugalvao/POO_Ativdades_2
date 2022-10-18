@@ -1,6 +1,4 @@
 package model;
-import view.Payments;
-
 import java.util.*;
 
 public class Aluno extends User implements Payments {

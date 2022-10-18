@@ -1,6 +1,4 @@
 package model;
-import view.Payments;
-
 import java.util.Scanner;
 
 public class Admin extends User implements Payments {

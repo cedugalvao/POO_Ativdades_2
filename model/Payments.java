@@ -1,4 +1,4 @@
-package view;
+package model;
 
 public interface Payments {
     void recebe_salario(double dinheiro);
