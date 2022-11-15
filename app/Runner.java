@@ -79,7 +79,7 @@ public class Runner {
                     this.userList.add(usuario);
                 }
             }
-
+            //---Trocando Senha---\\
             if(input == 3) {
                 System.out.println("Digite seu email");
                 String email = scan.nextLine();
@@ -101,7 +101,7 @@ public class Runner {
                     }
                 }
             }
-
+          //---Deletado Senha---\\
             if(input == 4) {
                 System.out.println("Digite seu email");
                 String email = scan.nextLine();
