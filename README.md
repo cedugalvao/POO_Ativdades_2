@@ -2,7 +2,7 @@
 
 ## Evolução do Trabalho da Matéria de POO do Curso de Ciência da Computação - UFAL
 O programa deve ser executado apartir do arquivo main aseguir:  
-![website]app/Main.java
+[main]app/Main.java
 ---
 ### CodeSmells:
 - Duplicated Code
