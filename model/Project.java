@@ -5,7 +5,7 @@ public class Project {
     public ArrayList<User> userList = new ArrayList<>();
     public ArrayList<Atividade> listaAtividades = new ArrayList<>();
     private String status;
-    private Integer id;
+    private String id;
     private String descrition;
     private String datainicio;
     private String datafim;
@@ -54,8 +54,8 @@ public class Project {
     public void add_atividade(Atividade atividade){
         this.listaAtividades.add(atividade);
     }
-    public Project(String status, Integer id, String descrition, String datainicio, String datafim,
-                    Integer bolsa, Double valor_bolsa, int TempoBolsa, User user) {
+    public Project(String status, String id, String descrition, String datainicio, String datafim,
+                   Integer bolsa, Double valor_bolsa, int TempoBolsa, User user) {
         super();
         this.setStatus(status);
         this.id = id;
@@ -68,11 +68,11 @@ public class Project {
         this.userList.add(user);
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

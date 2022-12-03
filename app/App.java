@@ -8,8 +8,6 @@ public class App {
     public ArrayList<Atividade> listaAtividades = new ArrayList<>();
     public ArrayList<User> userList = new ArrayList<>();
 
-    public User current = null;
-
     public App(ArrayList<User> userList) {
         this.userList.addAll(userList);
         this.programa();
@@ -20,35 +18,38 @@ public class App {
         Integer todosatributosa = 0;
         String status = "Em processo de criacao";
         //----Criando Projeto pre-pronto----\\
-        this.listaProjetos.add(new Project("concluido", 00, "projeto1", "31/12/2000", "31/12/2022", 1, 1.200, 6, userList.get(0)));
+        this.listaProjetos.add(new Project("concluido", "1", "projeto1", "31/12/2000", "31/12/2022", 1, 1.200, 6, userList.get(0)));
         //----Criando Atividades pre-prontas----\\
-        this.listaAtividades.add(new Atividade(00, "atividade0", "01/01/2001", "22/02/2022", null, status, userList.get(0)));
-        this.listaAtividades.add(new Atividade(01, "atividade1", "01/01/2001", "22/02/2022", null,  status, userList.get(0)));
-
+        this.listaAtividades.add(new Atividade("1", "atividade1", "01/01/2001", "22/02/2022", null, status, userList.get(0)));
+        this.listaAtividades.add(new Atividade("2", "atividade2", "01/01/2001", "22/02/2022", null,  status, userList.get(0)));
+        System.out.println("O sistema ja conta com o cadastro de um projeto inicial e duas atividades\n"
+        				 + "id do projeto: 1 , id das aatividades são respectivamentes 1 e 2 ");
         int n = 0;
         while (n != -1) {
             System.out.println("Selecione a opcao desejada:\n"
-            		+ "1-Criar\n"
-            		+ "2-Alterar\n"
-            		+ "3-Remover\n"
-            		+ "4-Consultar\n"
-            		+ "5-Pagamento da bolsa\n"
-            		+ "6-Realizar relatorio\n"
-            		+ "7-Associar usuario a projeto\n"
-            		+ "8-Associar atividade a projeto\n"
-            		+ "9-Associar usuario a atividade\n"
-            		+ "10-Realizar intercambio\n"
-            		+ "0-encerrar o programa");
+                    + "1-Criar\n"
+                    + "2-Alterar\n"
+                    + "3-Remover\n"
+                    + "4-Consultar\n"
+                    + "5-Pagamento da bolsa\n"
+                    + "6-Realizar relatorio\n"
+                    + "7-Associar usuario a projeto\n"
+                    + "8-Associar atividade a projeto\n"
+                    + "9-Associar usuario a atividade\n"
+                    + "10-Realizar intercambio\n"
+                    + "0-encerrar o programa");
             n = s.nextInt();
             switch (n) {
                 case 1:
                     int m;
-                    System.out.println("Qual atributo deseja?\n"
-                    		+ "1-projeto\n"
-                    		+ "2-atividade\n");
+                    System.out.println("""
+                            Qual atributo deseja?
+                            1-projeto
+                            2-atividade
+                            """);
                     m = s.nextInt();
                     if (m == 1) {
-                        criar_projeto(status);
+                        criarProjetos(status);
                     } else if (m == 2) {
                         criar_atividade(status);
                     } else {
@@ -57,59 +58,58 @@ public class App {
                     }
                     break;
                 case 2:
-                    System.out.println("Vc escolheu alterar.");
                     int o;
-                    System.out.println("Qual atributo deseja?\n"
-                    		+ "1-projeto\n"
-                    		+ "2-atividade\n");
+                    System.out.println("""
+                            Qual atributo deseja alterar?
+                            1-projeto
+                            2-atividade
+                            """);
                     o = s.nextInt();
                     if (o == 1) {
-                        System.out.println("Digitou 1.");
-                      //----Alterando Projeto----\\
-                        alterarprojeto(listaProjetos);
+                        System.out.println("Alterando Projeto.");
+                        //----Alterando Projeto----\\
+                        alterarProjeto(listaProjetos);
                     } else if (o == 2) {
-                    	//----Alterando Atividade----\\
-                        System.out.println("Digitou 2.");
+                        //----Alterando Atividade----\\
+                        System.out.println("Alterando Atividade.");
                         alterar_atividade(listaAtividades);
                     } else {
-                        System.out.println("Digite corretamente.");
+                        System.out.println("Comando não reconhecido.");
                         break;
                     }
                     break;
                 case 3:
-                    System.out.println("Vc escolheu remover.");
                     int p;
-                    System.out.println("Qual atributo deseja?\n"
-                    		+ "1-projeto\n"
-                    		+ "2-atividade\n");
+                    System.out.println("Qual atributo deseja remover?\n"
+                            + "1-projeto\n"
+                            + "2-atividade\n");
 
                     p = s.nextInt();
                     if (p == 1) {
-                        System.out.println("Digitou 1.");
+                        System.out.println("Removendo Projeto.");
                         removerprojeto(listaProjetos);
                     } else if (p == 2) {
-                        System.out.println("Digitou 2.");
+                        System.out.println("Removendo Atividade.");
                         removeratividade(listaAtividades);
                     } else {
-                        System.out.println("Digite corretamente.");
+                        System.out.println("Comando não reconhecido.");
                         break;
                     }
                     break;
                 case 4:
-                    System.out.println("Vc escolheu consultar.");
                     int q;
-                    System.out.println("Qual atributo deseja?\n"
-                    		+ "1-projeto\n"
-                    		+ "2-atividade\n");
+                    System.out.println("Qual atributo deseja consultar?\n"
+                            + "1-projeto\n"
+                            + "2-atividade\n");
                     q = s.nextInt();
                     if (q == 1) {
-                        System.out.println("Digitou 1.");
+                        System.out.println("Consultando Projeto.");
                         consultarprojeto();
                     } else if (q == 2) {
-                        System.out.println("Digitou 2.");
+                        System.out.println("Consultando Atividade.");
                         consultaratividade();
                     } else {
-                        System.out.println("Digite corretamente.");
+                        System.out.println("Comando não reconhecido.");
                         break;
                     }
                     break;
@@ -120,13 +120,13 @@ public class App {
                     relatorio();
                     break;
                 case 7:
-                    linkar_usuario_projeto(status, todosatributosp);
+                    linkar_usuario_projeto(todosatributosp);
                     break;
                 case 8:
-                    linkar_atividade_projeto(status, todosatributosp);
+                    linkar_atividade_projeto(todosatributosp);
                     break;
                 case 9:
-                    linkiar_usuario_atividade(status, todosatributosa);
+                    linkiar_usuario_atividade(todosatributosa);
                     break;
                 case 10:
                     intercambio();
@@ -138,7 +138,7 @@ public class App {
         }
     }
 
-    public void criar_projeto(String status) {
+    public void criarProjetos(String status) {
         System.out.println("Criando Projeto.");
         double valor_bolsa = 0;
         int bolsa;
@@ -147,22 +147,22 @@ public class App {
         for (int i = 1; i <= nump; i++) {
             System.out.printf("Projeto %d:\n", i);
             System.out.println("Id do projeto: ");
-            Integer id = s.nextInt();
+            String id = s.next();
             System.out.println("Descricao do projeto:\n"
-            		+ "(se não houver descricao ainda digite -1)");
+                    + "(se não houver descricao ainda digite -1)");
             String descrition = s.next();
             if (!descrition.equals("-1")) {
                 status = "concluido";
             }
             System.out.println("(formato dd/MM/yyyy)\n"
-            		+ "Data de inicio: ");
+                    + "Data de inicio: ");
             String datainicio = s.next();
             System.out.println("(formato dd/MM/yyyy)\n"
-            		+ "Data de termino(Se nao tiver acabado digite -1):");
+                    + "Data de termino(Se nao houver data de finalização digite -1):");
             String datafim = s.next();
             System.out.println("Tem bolsa?\n"
-            		+ "1 - sim\n"
-            		+ "0- - nao\n");
+                    + "1 - sim\n"
+                    + "0- - nao\n");
             bolsa = s.nextInt();
             if (bolsa == 1) {
                 System.out.println("Qual o valor da bolsa?");
@@ -184,14 +184,14 @@ public class App {
     }
 
     public void criar_atividade(String status) {
-        System.out.println("Vc quer adicionar atividade.");
+        System.out.println("Deseja adicionar atividade.");
         int numa;
         System.out.println("Quantas atividades vão ser registradas?");
         numa = s.nextInt();
         for (int i = 0; i < numa; i++) {
             System.out.printf("Atividade %d:\n", i);
             System.out.println("Id da atividade: ");
-            Integer ida = s.nextInt();
+            String id = s.next();
             System.out.println("Descricao da atividade:\n(Se nao houver digitar -1)");
             String descritiona = s.next();
             System.out.println("(formato dd/MM/yyyy)\nData de inicio: ");
@@ -217,16 +217,16 @@ public class App {
                 break;
             }
 
-            Atividade atividade = new Atividade(ida, descritiona, datainicio, datafinal, coord, status, null);
+            Atividade atividade = new Atividade(id, descritiona, datainicio, datafinal, coord, status, null);
             this.listaAtividades.add(atividade);
             System.out.println("Atividade adicionada com sucesso.");
         }
     }
 
     public void alterar_atividade(List<Atividade> listaAtividades) {
-        int procura;
+        String procura;
         System.out.println("Digite o id da atividade que vc quer alterar:\n");
-        procura = s.nextInt();
+        procura = s.next();
         Atividade atividadeatual = null;
         boolean existeatv = false;
 
@@ -238,10 +238,10 @@ public class App {
             }
         }
 
-        if (existeatv == true) {
-            int novoid;
+        if (existeatv) {
+            String novoid;
             System.out.println("Digite o id:\n");
-            novoid = s.nextInt();
+            novoid = s.next();
             atividadeatual.setId(novoid);
             String novadescricao;
             System.out.println("Digite descricao:\n");
@@ -252,7 +252,7 @@ public class App {
             novadatainicio = s.next();
             atividadeatual.setDatainicio(novadatainicio);
             String novadatafinal;
-            System.out.println("Digite data final:\n"); // dps pega essa data final só com numero e se ela for antes da data de hoje então status encerrado
+            System.out.println("Digite data final:\n");
             novadatafinal = s.next();
             atividadeatual.setDatafinal(novadatafinal);
 
@@ -274,9 +274,9 @@ public class App {
         }
     }
 
-    public void alterarprojeto(ArrayList<Project> projeto) {
+    public void alterarProjeto(ArrayList<Project> projeto) {
         System.out.println("Digite o id da atividade que vc quer alterar:\n");
-        int idprojeto = s.nextInt();
+        String idprojeto = s.next();
         Project projetoatual = null;
         boolean existeproj = false;
 
@@ -288,9 +288,9 @@ public class App {
             }
         }
 
-        if (existeproj == true) {
+        if (existeproj) {
             System.out.println("Id do projeto: ");
-            Integer id = s.nextInt();
+            String id = s.next();
             projetoatual.setId(id);
             System.out.println("Descricao do projeto:");
             String descrition = s.next();
@@ -317,7 +317,7 @@ public class App {
 
     public void removeratividade(List<Atividade> listaAtividades) {
         System.out.println("Digite o id da atividade que vc quer remover:\n");
-        int procura = s.nextInt();
+        String procura = s.next();
         for (Atividade activity : listaAtividades) {
             if (activity.getId().equals(procura)) {
                 System.out.print("Atividade removida com sucesso.\n");
@@ -329,9 +329,9 @@ public class App {
     }
 
     public void removerprojeto(ArrayList<Project> projeto) {
-        int idprojeto;
+        String idprojeto;
         System.out.println("Digite o id da atividade que vc quer alterar:\n");
-        idprojeto = s.nextInt();
+        idprojeto = s.next();
         Project projetoatual;
         int foiremovido = 0;
 
@@ -353,27 +353,25 @@ public class App {
 
     public void consultaratividade() {
         System.out.println("Digite o id da atividade que vc quer consultar:\n");
-        int procura = s.nextInt();
+        String procura = s.next();
         for (Atividade atividade : this.listaAtividades) {
             if (atividade.getId().equals(procura)) {
-                System.out.print("Atividade(id): " + atividade.getId() + "\nDescricao: " + atividade.getDescricao()
-                        + "\nData inicio: " + atividade.getDatainicio() + "\nData final: " + atividade.getDatafinal());
-                atividade.printar_coord();
-                atividade.activity_users();
+            	atividade.relatorio("id");
             }
         }
     }
+    
 
     public void consultarprojeto() {
         System.out.println("Digite o id do projeto que vc quer consultar:\n");
-        int procura = s.nextInt();
+        String procura = s.next();
         for (Project projeto : this.listaProjetos) {
             if (projeto.getId().equals(procura)) {
-                System.out.println("Projeto(id)" + projeto.getId() + 
-                		"\nDescricao: " + projeto.getDescrition() + 
-                		"\nInicio" + projeto.getDataInicio() + 
-                		"\nfinal:" + projeto.getDataFim() + 
-                        "\nBolsa tipo:" + projeto.getBolsa() + 
+                System.out.println("Projeto(id)" + projeto.getId() +
+                        "\nDescricao: " + projeto.getDescrition() +
+                        "\nInicio" + projeto.getDataInicio() +
+                        "\nfinal:" + projeto.getDataFim() +
+                        "\nBolsa tipo:" + projeto.getBolsa() +
                         "\nValor da bolsa:" + projeto.getValor_bolsa() +
                         "\nTempo Valido:" + projeto.getTempoBolsa() + "\n");
                 projeto.print_user_projects();
@@ -385,7 +383,7 @@ public class App {
 
     public void pagar() {
         System.out.println("Digite o id do projeto que vc quer pagar:\n");
-        int procura = s.nextInt();
+        String procura = s.next();
         for (Project projeto : this.listaProjetos) {
             if (projeto.getId().equals(procura)) {
                 System.out.print("Pagamento em andamento do projeto ");
@@ -413,7 +411,7 @@ public class App {
         }
     }
 
-    public void linkar_usuario_projeto(String status, Integer todos_atributos) {
+    public void linkar_usuario_projeto(Integer todos_atributos) {
         int i = 0;
         for (User usuario : this.userList) {
             if (usuario instanceof Aluno) {
@@ -424,7 +422,7 @@ public class App {
         int resp = s.nextInt();
         if (resp == 1) {
             System.out.println("vc quer adicionar.\nDigite o id do projeto:");
-            int id_p = s.nextInt();
+            String id_p = s.next();
             for (Project procurar : this.listaProjetos) {
                 if (procurar.getId().equals(id_p)) {
                     System.out.println("Digite o e-mail do aluno:");
@@ -436,7 +434,7 @@ public class App {
                                 procurar.add_user(usuario);//adicionando nesse projeto esse usuario pelo e-mail dele
                                 todos_atributos = todos_atributos + 1;
                                 if (todos_atributos >= 2 && !procurar.getDescrition().equals("-1")) {
-                                    status = "Em andamento";
+                                    String status = "Em andamento";
                                     procurar.setStatus(status);
                                 }
                             }
@@ -454,24 +452,24 @@ public class App {
         }
     }
 
-    public void linkar_atividade_projeto(String status, Integer todos_atributos) {
+    public void linkar_atividade_projeto(Integer todos_atributos) {
         int i = 0;
         System.out.println("Quer adicionar alguma atividade a algum projeto?\n1-[Sim]\n0-[Nao]");
         int resp = s.nextInt();
         if (resp == 1) {
             System.out.println("vc quer adicionar.\nDigite o id do projeto:");
-            int id_p = s.nextInt();
+            String id_p = s.next();
             for (Project procurar : this.listaProjetos) {
                 if (procurar.getId().equals(id_p)) {
                     System.out.println("Digite o id da atividade:");
-                    int id_a = s.nextInt();
+                    String id_a = s.next();
                     for (Atividade atividade : this.listaAtividades) {
                         if (atividade.getId().equals(id_a)) {
                             i = 1;
                             procurar.add_atividade(atividade);
                             todos_atributos = todos_atributos + 1;
                             if (todos_atributos >= 2 && !procurar.getDescrition().equals("-1")) {
-                                status = "Em andamento";
+                                String status = "Em andamento";
                                 procurar.setStatus(status);
                             }
                         }
@@ -487,26 +485,27 @@ public class App {
         }
     }
 
-    public void linkiar_usuario_atividade(String status, Integer todos_atributos) {
+    public void linkiar_usuario_atividade(Integer todos_atributos) {
         System.out.print("...");
         int i = 0;
-        System.out.println("Quer adicionar algum usuario a alguma atividade?\n"
-        		+ "1-[Sim]\n"
-        		+ "0-[Nao]");
+        System.out.println("""
+                Quer adicionar algum usuario a alguma atividade?
+                1-[Sim]
+                0-[Nao]""");
         int resp = s.nextInt();
         if (resp == 1) {
             System.out.println("vc quer adicionar.\n"
-            		+ "Digite o id da atividade:");
-            int id_a = s.nextInt();
+                    + "Digite o id da atividade:");
+            String id_a = s.next();
             for (Atividade procurar : this.listaAtividades) {
                 if (procurar.getId().equals(id_a)) {
                     System.out.println("Digite o e-mail do usuario");
                     String email = s.next();
 
                     for (User currentUser : this.userList) {
-                            System.out.println(currentUser.toString());
-                            System.out.print("\n");
-                        }
+                        System.out.println(currentUser.toString());
+                        System.out.print("\n");
+                    }
 
                     for (User usuario : this.userList) {
                         if (usuario instanceof Aluno) {
@@ -516,7 +515,7 @@ public class App {
                                 i = 1;
                                 todos_atributos = todos_atributos + 1;
                                 if (todos_atributos >= 2 && !procurar.getDescricao().equals("-1")) {
-                                    status = "Em andamento";
+                                    String status = "Em andamento";
                                     procurar.setStatus(status);
                                 }
                             }
@@ -543,7 +542,7 @@ public class App {
                     for(Project projeto: listaProjetos){
                         if(projeto.find_user(user)){
                             System.out.print("o usuario pertence a um projeto.\nQual atividade vai ser feito o intercambio?\n");
-                            Integer id = s.nextInt();
+                            String id = s.next();
                             for (Atividade activity: listaAtividades){
                                 if (activity.getId().equals(id)){
                                     activity.add_user(usuario);

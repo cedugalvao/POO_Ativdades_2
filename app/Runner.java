@@ -13,8 +13,13 @@ public class Runner {
     public Runner() {
     	//----Criando um usuario admin inicial----\\
         this.userList.add(new Admin(0001, "Admin", "admin", "admin", "coordenador"));
-      //----Criando um usuario inicial----\\
-        this.userList.add(new Aluno(1911, "Carlos", "centg@ic.br", "carlos", "graduacao", 19110974));
+
+        //----Criando um usuario inicial----\\
+          this.userList.add(new Aluno(0, "Carlos", "centg@ic.br", "1911", "graduacao", 19110974));
+          
+        System.out.println("O sistema ja conta com o cadastro de um usuario(aluno) inicial e um usuario(coordenador)\n"
+        		+ "De entrada: email: admin, senha: admin, para o coordenador\n"
+        		+ "E email: centg@ic.br, senha: 1911");
 
         Scanner scan = new Scanner(System.in);
         boolean isRunning = true;
@@ -124,11 +129,16 @@ public class Runner {
                 System.out.println("Digite seu email");
                 String email = scan.nextLine();
                 for (User atual : this.userList){
-                    if (atual.email.equals(email)){
-                        System.out.println("Alterando dados\n");
-                        atual.alterar();
-                        break;
+                	try {
+                		if(atual.email.equals(email)) {
+                			System.out.println("Alterando dados\n");
+                			atual.alterar();
+                		}
+                    } catch(Exception e) {
+                    	System.out.println("Email não existente");	
+                    	break;
                     }
+                	
                 }
             }
           //----Chamando relatorio----\\

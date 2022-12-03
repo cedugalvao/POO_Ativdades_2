@@ -26,7 +26,7 @@ public class Aluno extends User implements Payments {
             Scanner s = new Scanner(System.in);
             System.out.print("\n1 - nome\n"
             		+ "2 - email\n"
-            		+ "3-senha\n"
+            		+ "3 - senha\n"
             		+ "4 - nivel\n"
             		+ "5 - numero de matricula\n");
             int num = s.nextInt();

@@ -23,7 +23,10 @@ public class Admin extends User implements Payments {
     public void alterar(){
         System.out.print("Digite o que voce quer que seja  alterado:");
         Scanner s = new Scanner(System.in);
-        System.out.print("\n1-nome\n2-email\n3-senha\n4-cargo\n");
+        System.out.print("\n1-nome\n"
+        		+ "2-email\n"
+        		+ "3-senha\n"
+        		+ "4-cargo\n");
         int num = s.nextInt();
         if(num==1){
         	System.out.print("Digite seu novo nome: ");
