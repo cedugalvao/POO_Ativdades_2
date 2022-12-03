@@ -7,5 +7,5 @@
 ### CodeSmells:
 - Duplicated Code
 - Data Clumps
-- Long Method
 - Divergent Change
+- Feature Envy
