@@ -29,11 +29,11 @@ public class Atividade {
     public void activity_users(){
         System.out.println("Lista de usuarios: ");
         if (userList == null){
-            System.out.println("sem participantes.");
+            System.out.println("Não existem participantes.");
         }
         else{
             for (User usuario: userList){
-                System.out.print(usuario.getName() + "\n");
+                System.out.print("Nome: "+usuario.getName() +", Email: "+usuario.getEmail()+ "\n");
             }
         }
     }
@@ -70,13 +70,7 @@ public class Atividade {
     public String getStatus() {
         return status;
     }
-    public void printar_coord() {
-        if (responsavel != null) {
-            System.out.print("Responsavel: " + responsavel.getName());
-        } else {
-            System.out.print("Não há responsavel no momento.");
-        }
-    }
+    
 
     public String getDescricao() {
         return descricao;
@@ -90,7 +84,7 @@ public class Atividade {
         return datafinal;
     }
 	
-		
+		//--Data clumps--\\ //--Corrigido--\\
     public void relatorio(String string) {
         System.out.print("Atividade(id): " + getId() + "\nDescricao: " + getDescricao()
                 + "\nData inicio: " + getDatainicio() + "\nData final: " + getDatafinal());
@@ -101,7 +95,7 @@ public class Atividade {
         }
         System.out.println("Lista de usuarios: ");
         if (userList == null){
-            System.out.println("sem participantes.");
+            System.out.println("Não existem participantes.");
         }
         else{
             for (User usuario: userList){

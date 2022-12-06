@@ -11,17 +11,17 @@ public class Admin extends User implements Payments {
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
-    // Uso de Overriding
+    
     @Override
     public String toString() {
         System.out.println(super.toString());
         return "cargo: " + this.cargo;
     }
 
-    // Uso de Abstract Class - uso tambem de convenção v para value
+   
     @Override
     public void alterar(){
-        System.out.print("Digite o que voce quer que seja  alterado:");
+        System.out.print("Digite o que deseja alterar:");
         Scanner s = new Scanner(System.in);
         System.out.print("\n1-nome\n"
         		+ "2-email\n"
@@ -52,11 +52,11 @@ public class Admin extends User implements Payments {
 
     @Override
     public void recebe_salario(double dinheiro) {
-        System.out.printf("Salario caiu na conta. R$:%.4f\n", dinheiro);
+        System.out.printf("Salario depositado. R$:%.4f\n", dinheiro);
     }
 
     @Override
     public void recebe_salario(double dinheiro, String name) {
-        System.out.printf("Efetuando pagamento de R$:%.4f na conta do profissional %s\n", dinheiro, name);
+        System.out.printf("Efetuando pagamento de R$:%.4f na conta de: %s\n", dinheiro, name);
     }
 }

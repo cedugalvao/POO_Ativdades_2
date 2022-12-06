@@ -21,19 +21,7 @@ public class Project {
         }
         return false;
     }
-    public void relatorio() {
-        System.out.println("Mostrando relatorio...");
-        System.out.printf("id: %d\n", id);
-        System.out.printf("descricao: %s\n", descrition);
-        System.out.printf("status: %s\n", status);
-        System.out.printf("Data de inicio do projeto: %s\n", datainicio);
-        System.out.printf("Data de término do projeto: %s\n", datafim);
-        System.out.printf("período da bolsa: %s\n", tempo_bolsa);
-
-        print_activity_projects();
-        print_user_projects();
-    }
-
+    
     public void print_user_projects(){
         System.out.print("Lista de Usuarios:\n");
         for (User usuario: this.userList){
