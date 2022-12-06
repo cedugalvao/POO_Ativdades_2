@@ -5,7 +5,7 @@
 [main](app/Main.java)
 ---
 ### CodeSmells:
-- Duplicated Code
-- Data Clumps
-- Divergent Change
-- Feature Envy
+- Large Class :white_check_mark:
+- Duplicated Code :white_check_mark:
+- Data Clumps :white_check_mark:
+- Feature Envy :white_check_mark:
