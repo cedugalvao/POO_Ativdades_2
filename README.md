@@ -5,7 +5,7 @@
 [main](app/Main.java)
 ---
 ### CodeSmells:
--Large Class
+- Large Class
 - Duplicated Code
 - Data Clumps
 - Divergent Change
