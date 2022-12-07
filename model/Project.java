@@ -4,115 +4,69 @@ import java.util.*;
 public class Project {
     public ArrayList<User> userList = new ArrayList<>();
     public ArrayList<Atividade> listaAtividades = new ArrayList<>();
-    private String status;
-    private String id;
-    private String descrition;
-    private String datainicio;
-    private String datafim;
+    public Dados dados;
     private Integer bolsa;
     private double valor_bolsa;
-    private int tempo_bolsa;
-
+    private String periodo_bolsa;
+    public Project(Dados dados,
+                   Integer bolsa, Double valor_bolsa, String periodobolsa, User user) {
+        super();
+        this.dados = dados;
+        this.bolsa = bolsa;
+        this.valor_bolsa = bolsa;
+        this.periodo_bolsa = periodobolsa;
+        this.userList.add(user);
+    }
     public boolean find_user(String name) {
         for (User user : userList) {
-            if (user.getName().equals(name)) {
+            if (user.pessoa.name.equals(name)) {
                 return true;
             }
         }
         return false;
     }
-    
+    public void relatorio() {
+        dados.DadosRelatorio();
+        print_activity_projects();
+        print_user_projects();
+    }
     public void print_user_projects(){
         System.out.print("Lista de Usuarios:\n");
         for (User usuario: this.userList){
-            System.out.print(usuario.getName() + "\n");
+            System.out.print(usuario.pessoa.name + "\n");
         }
     }
-
     public void add_user(User usuario){
         this.userList.add(usuario);
     }
-
     public void print_activity_projects(){
         System.out.println("Lista de Atividades:");
         for (Atividade atividade: this.listaAtividades){
-            System.out.print(atividade.getDescricao() + "\n");
+            System.out.print(atividade.dados.getDescricao() + "\n");
         }
     }
     public void add_atividade(Atividade atividade){
         this.listaAtividades.add(atividade);
     }
-    public Project(String status, String id, String descrition, String datainicio, String datafim,
-                   Integer bolsa, Double valor_bolsa, int TempoBolsa, User user) {
-        super();
-        this.setStatus(status);
-        this.id = id;
-        this.descrition = descrition;
-        this.datainicio = datainicio;
-        this.datafim = datafim;
-        this.bolsa = bolsa;
-        this.valor_bolsa = valor_bolsa;
-        this.tempo_bolsa = TempoBolsa;
-        this.userList.add(user);
+    public void setDados(Integer id, String descricao, String datainicio, String datafinal, String status) {
+        this.dados = new Dados(id, descricao, datainicio, datafinal, status);
     }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getDescrition() {
-        return descrition;
-    }
-
-    public void setDescrition(String descrition) {
-        this.descrition = descrition;
-    }
-
-    public String getDataInicio() {
-        return datainicio;
-    }
-
-    public void setDataInicio(String datainicio) {
-        this.datainicio = datainicio;
-    }
-
-    public String getDataFim() {
-        return datafim;
-    }
-
-    public void setDataFim(String dataend) {
-        this.datafim = dataend;
-    }
-
     public Integer getBolsa() {
         return bolsa;
     }
-
     public void setBolsa(Integer bolsa) {
         this.bolsa = bolsa;
     }
-
-    public int getTempoBolsa() {
-        return tempo_bolsa;
+    public String getPeriodo_bolsa() {
+        return periodo_bolsa;
     }
-
-    public void setTempoBolsa(int TempoBolsa) {
-        this.tempo_bolsa = TempoBolsa;
+    public void setPeriodobolsa(String periodobolsa) {
+        this.periodo_bolsa = periodobolsa;
     }
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public double getValor_bolsa() {
         return valor_bolsa;
     }
-
     public void setValor_bolsa(double valor_bolsa) {
         this.valor_bolsa = valor_bolsa;
     }
-
 }
