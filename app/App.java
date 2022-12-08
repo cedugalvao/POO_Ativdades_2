@@ -16,98 +16,157 @@ public class App {
         Integer todosatributosp = 0;
         Integer todosatributosa = 0;
         String status = "Em processo de criacao";
-        Dados dados1 = new Dados(14, "projeto1", "14/08/1999", "15/10/2020", "concluido");
-        Dados dados2 = new Dados(27, "projeto1", "14/08/1999", "15/10/2020", "concluido");
+        Dados dados1 = new Dados(10, "projeto1", "01/01/2001", "31/12/2022", "Em andamento");
+        Dados dados2 = new Dados(11, "projeto2", "11/08/2020", "11/08/2022", "concluido");
         //----Criando Projeto pre-pronto----\\
         this.listaProjetos.add(new Project(dados1, 1, 1.200, "15/10/2022", userList.get(0)));
         //----Criando Atividades pre-prontas----\\
         this.listaAtividades.add(new Atividade(dados1, current, userList.get(0)));
         this.listaAtividades.add(new Atividade(dados2, current, userList.get(0)));
-        System.out.println("O sistema ja conta com o cadastro de um projeto inicial e duas atividades\n"
-        				 + "id do projeto: 1 , id das aatividades são respectivamentes 1 e 2 ");
+        System.out.println("O sistema ja conta com o cadastro de dois projetos iniciais e duas atividades\n"
+        				 + "ids do projeto: 10 e 11 respectivamente , id das atividades são respectivamentes 10 e 11 ");
         int n = 0;
         while (n != -1) {
             System.out.println("""
                     Selecione a opcao desejada:
-                    1-criar
-                    2-alterar
-                    3-remover
-                    4-consultar
-                    5-pagar a bolsa
-                    6-mostrar relatorio
-                    7-Associar usuario a projeto
-                    8-Associar atividade a projeto
-                    9-Associar usuario a atividade
-                    10-Realizar intercambio
-                    0-encerrar o programa""");
+                    1 - Criar
+                    2 - Alterar
+                    3 - Remover
+                    4 - Consultar
+                    5 - Pagar a bolsa
+                    6 - Mostrar relatorio
+                    7 - Associar usuario a projeto
+                    8 - Associar atividade a projeto
+                    9 - Associar usuario a atividade
+                    10 - Realizar intercambio
+                    0 - Finalizar""");
             n = process();
 
             switch (n) {
-                case 1 -> {
-                    int m = opcao();
-                    if (m == 1) {
-                        criar_projeto(status);
-                    } else if (m == 2) {
-                        criar_atividade(status);
-                    }
+                case 1 : {
+                	int m = opcao();
+                	try {
+                		
+                        if (m == 1) {
+                            criar_projeto(status);
+                        } else if (m == 2) {
+                            criar_atividade(status);
+                        }
+            	    }catch(Exception e) {
+            	    	if(m==1) {
+            	            System.out.println("Projeto não adicionado.");
+            	    	}else if(m==2) {
+            	            System.out.println("Atividade não adicionada.");
+            	    	}
+            	    }
                 }
-                case 2 -> {
-                    System.out.println("Vc escolheu alterar.");
+                case 2 : {
+                    System.out.println("Deseja alterar.");
                     int o = opcao();
-                    if (o == 1) {
-                        alterarprojeto();
-                    } else if (o == 2) {
-                        alterar_atividade();
-                    }
+                    try {
+                    	if (o == 1) {
+                            alterarprojeto();
+                        } else if (o == 2) {
+                            alterar_atividade();
+                        }
+            	    }catch(Exception e) {
+            	    	if(o==1) {
+            	            System.out.println("Projeto não adicionado.");
+            	    	}else if(o==2) {
+            	            System.out.println("Atividade não adicionada.");
+
+            	    	}
+            	    }
                 }
-                case 3 -> {
-                    System.out.println("Vc escolheu remover.");
-                    int p = opcao();
-                    if (p == 1) {
-                        removerprojeto();
-                    } else if (p == 2) {
-                        removeratividade();
-                    }
+                case 3 : {
+                	System.out.println("Deseja realizar remoção.");
+                	int p = opcao();
+                	try {
+                		
+                        if (p == 1) {
+                            removerprojeto();
+                        } else if (p == 2) {
+                            removeratividade();
+                        }
+            	    }catch(Exception e) {
+            	    	if(p==1) {
+            	            System.out.println("Projeto não adicionado.");
+            	    	}else if(p==2) {
+            	            System.out.println("Atividade não adicionada.");
+
+            	    	}
+            	    }
                 }
-                case 4 -> {
-                    int c = opcao();
-                    if (c == 1) {
-                        consultarprojeto();
-                    } else if (c == 2) {
-                        consultaratividade();
-                    }
+                case 4 : {
+                	int c = opcao();
+                	try {
+                        if (c == 1) {
+                            consultarprojeto();
+                        } else if (c == 2) {
+                            consultaratividade();
+                        }
+            	    }catch(Exception e) {
+            	    	if(c==1) {
+            	            System.out.println("Projeto não adicionado.");
+            	    	}else if(c==2) {
+            	            System.out.println("Atividade não adicionada.");
+            	    	}
+            	    }
                 }
-                case 5 -> pagar();
-                case 6 -> relatorio();
-                case 7 -> associar_usuario_projeto(status, todosatributosp);
-                case 8 -> associar_atividade_projeto(status, todosatributosp);
-                case 9 -> associar_usuario_atividade(status, todosatributosa);
-                case 10 -> intercambio();
-                case 0 -> n = -1;
-                default -> System.out.print("digite corretamente.");
+                case 5 :
+	                try {
+	                	pagar();
+	        	    }catch(Exception e) {
+	        	    	System.out.println("Não existem bolsas para realizar pagamentos.");
+	        	    }
+                case 6 :
+                	try {
+                		relatorio();
+                	}catch(Exception e) {
+                		System.out.println("Dados insulficientes para gerar relátorio.");
+                	}
+                case 7 : 
+                	try {
+                		associar_usuario_projeto(status, todosatributosp);
+                	}catch(Exception e) {
+                		System.out.println("Erro! e-mail incorreto ou inexistente.");
+                	}
+                case 8 : 
+                		associar_atividade_projeto(status, todosatributosp);
+                case 9 : 
+                		associar_usuario_atividade(status, todosatributosa);
+                case 10 : 
+                	intercambio();
+                case 0 : 
+                	n = -1;
+                default : 
+                	System.out.print("Comando não compreendido.");
             }
         }
     }
     public void menu() {
-        System.out.println("Quer fazer isso com qual atributo?\n1-projeto\n2-atividade\n");
+        System.out.println("Qual atributo deseja?\n"
+        		+ "1 - Projeto\n"
+        		+ "2 - Atividade\n");
     }
     public int opcao(){
         menu();
-        while(true){
-            int q = process();
-            if (q == 1 || q == 2){
-                return q;
-            }
-            else{
-                System.out.println("Digite corretamente");
-            }
+        while(true){        	
+        	try {
+        		int q = process();
+        		if (q == 1 || q == 2){
+                    return q;
+                }
+    	    }catch(Exception e) {
+    	    	System.out.println("Digite corretamente");
+    	    }
         }
     }
     public void criar_projeto(String status) {
-        System.out.println("Vc quer adicionar projeto.");
+        System.out.println("Adicionando projetos.");
         double valor_bolsa = 0;
         int bolsa;
-        System.out.print("Quantos projetos vao ser registrados?");
+        System.out.print("Quantos projetos deseja registrar?");
         int nump = process();
         for (int i = 1; i <= nump; i++) {
             System.out.printf("Projeto %d:\n", i);
@@ -144,8 +203,8 @@ public class App {
         }
     }
     public void criar_atividade(String status) {
-        System.out.println("Vc quer adicionar atividade.");
-        System.out.println("Quantas atividades vão ser registradas?");
+        System.out.println("Adicionando atividade.");
+        System.out.println("Quantas atividades deseja registrar?");
         int numa = process();
         for (int i = 0; i < numa; i++) {
             System.out.printf("Atividade %d:\n", i);
@@ -173,7 +232,7 @@ public class App {
         }
     }
     public void alterar_atividade() {
-        System.out.println("Digite o id da atividade que vc quer alterar:\n");
+        System.out.println("Digite o id da atividade que deseja alterar:\n");
         int procura = process();
         Atividade atividadeatual = procuratividade(procura);
 
@@ -200,7 +259,7 @@ public class App {
         }
     }
     public void alterarprojeto() {
-        System.out.println("Digite o id da atividade que vc quer alterar:\n");
+        System.out.println("Digite o id do projeto que deseja alterar:\n");
         int idprojeto = process();
         Project projetoatual = procurarprojeto(idprojeto);
         if (projetoatual != null) {
@@ -228,7 +287,7 @@ public class App {
         }
     }
     public void removeratividade() {
-        System.out.println("Digite o id da atividade que vc quer remover:\n");
+        System.out.println("Digite o id da atividade que deseja remover:\n");
         int procura = process();
         Atividade activity = procuratividade(procura);
         if(activity != null){
@@ -237,7 +296,7 @@ public class App {
         }
     }
     public void removerprojeto() {
-        System.out.println("Digite o id da atividade que vc quer remover:");
+        System.out.println("Digite o id da atividade que deseja remover:");
         int idprojeto = process();
         Project projetoatual = procurarprojeto(idprojeto);
         if(projetoatual != null){
@@ -246,7 +305,7 @@ public class App {
         }
     }
     public void consultaratividade() {
-        System.out.println("Digite o id da atividade que vc quer consultar:\n");
+        System.out.println("Digite o id da atividade que deseja consultar:\n");
         int procura = process();
         Atividade atividade = procuratividade(procura);
         if(atividade != null){
@@ -254,7 +313,7 @@ public class App {
         }
     }
     public void consultarprojeto() {
-        System.out.println("Digite o id do projeto que vc quer consultar:\n");
+        System.out.println("Digite o id do projeto que deseja consultar:\n");
         int procura = process();
         Project projeto = procurarprojeto(procura);
         if(projeto != null){
@@ -262,7 +321,7 @@ public class App {
             }
     }
     public void pagar() {
-        System.out.println("Digite o id do projeto que vc quer pagar:\n");
+        System.out.println("Digite o id do projeto que realizar o pagamento:\n");
         int procura = process();
         Project projeto = procurarprojeto(procura);
         if(projeto != null){
@@ -290,7 +349,7 @@ public class App {
     public void associar_usuario_projeto(String status, Integer todos_atributos) {
         int i = 0;
         listaaluno();
-        System.out.println("vc quer adicionar.\nDigite o id do projeto:");
+        System.out.println("Adicionando aluno a um projeto.\nDigite o id do projeto:");
         int id_p = process();
         Project procurar = procurarprojeto(id_p);
         if(procurar != null){
@@ -311,30 +370,32 @@ public class App {
                     }
                 }
             }
-            if (i != 1) {System.out.println("Erro! e-mail incorreto ou inexistente.");}
     }
     public void associar_atividade_projeto(String status, Integer todos_atributos) {
         int i = 0;
-        System.out.println("vc quer adicionar.\nDigite o id do projeto:");
+        System.out.println("Adicionadno atividade ao projeto.\nDigite o id do projeto:");
         int id_p = process();
         Project procurar = procurarprojeto(id_p);
-        if(procurar != null){
-            System.out.println("Digite o id da atividade:");
-            int id_a = process();
-            for (Atividade atividade : this.listaAtividades) {
-                if (atividade.dados.getId().equals(id_a)) {
-                    i = 1;
-                    procurar.add_atividade(atividade);
-                    System.out.println("Atividade associada com sucesso.");
-                    todos_atributos = todos_atributos + 1;
-                    if (todos_atributos >= 2 && !procurar.dados.getDescricao().equals("-1")) {
-                        status = "Em andamento";
-                        procurar.dados.setStatus(status);
-                    }
-                }
-            }
-        }
-            if (i != 1) {System.out.println("Erro! id incorreto ou inexistente");}
+		try {
+			if(procurar != null){
+	            System.out.println("Digite o id da atividade:");
+	            int id_a = process();
+	            for (Atividade atividade : this.listaAtividades) {
+	                if (atividade.dados.getId().equals(id_a)) {
+	                    i = 1;
+	                    procurar.add_atividade(atividade);
+	                    System.out.println("Atividade associada com sucesso.");
+	                    todos_atributos = todos_atributos + 1;
+	                    if (todos_atributos >= 2 && !procurar.dados.getDescricao().equals("-1")) {
+	                        status = "Em andamento";
+	                        procurar.dados.setStatus(status);
+	                    }
+	                }
+	            }
+	        }
+		}catch(Exception e) {
+			System.out.println("Erro! id incorreto ou inexistente");
+		}
     }
     public void associar_usuario_atividade(String status, Integer todos_atributos) {
         System.out.print("...");
@@ -342,49 +403,52 @@ public class App {
         System.out.println("vc quer adicionar.\nDigite o id da atividade:");
         int id_a = process();
         Atividade procurar = procuratividade(id_a);
-        if(procurar != null){
-            System.out.println("Digite o e-mail do usuario");
-            String email = s.next();
-            for (User usuario : this.userList) {
-                if (usuario instanceof Aluno) {
-                    if (usuario.pessoa.email.equals(email) && !procurar.find_user(email)) {
-                        procurar.add_user(usuario);
-                        System.out.printf("%s associado com sucesso.\n", usuario.pessoa.name);
-                        i = 1;
-                        todos_atributos = todos_atributos + 1;
-                        if (todos_atributos >= 2 && !procurar.dados.getDescricao().equals("-1")) {
-                            status = "Em andamento";
-                            procurar.dados.setStatus(status);
+        try {
+        	if(procurar != null){
+                System.out.println("Digite o e-mail do usuario");
+                String email = s.next();
+                for (User usuario : this.userList) {
+                    if (usuario instanceof Aluno) {
+                        if (usuario.pessoa.email.equals(email) && !procurar.find_user(email)) {
+                            procurar.add_user(usuario);
+                            System.out.printf("%s associado com sucesso.\n", usuario.pessoa.name);
+                            i = 1;
+                            todos_atributos = todos_atributos + 1;
+                            if (todos_atributos >= 2 && !procurar.dados.getDescricao().equals("-1")) {
+                                status = "Em andamento";
+                                procurar.dados.setStatus(status);
+                            }
                         }
                     }
                 }
             }
-        }
-        if (i != 1) {
-                System.out.println("Erro! id incorreto ou inexistente");
-                System.out.println("!!Obs: Só é permitido adicionar alunos.!!");
-            }
-        }
+	    }catch(Exception e) {
+	    	System.out.println("Erro! id incorreto ou inexistente");
+            System.out.println("!!Obs: Só é permitido adicionar alunos.!!");
+	    }
+    }
     public void intercambio() {
         System.out.println("Qual o usuario que vai fazer o intercambio?");
         String user = s.next();
         for (User usuario : userList) {
-            if (usuario instanceof Aluno) {
-                if (usuario.pessoa.name.equals(user)) {
-                    for(Project projeto: listaProjetos){
-                        if(projeto.find_user(user)){
-                            System.out.print("o usuario pertence a um projeto.\nQual atividade vai ser feito o intercambio?\n");
-                            int id = process();
-                            Atividade activity = procuratividade(id);
-                            if(activity != null){
-                                activity.add_user(usuario);
-                                System.out.println("Usuario adicionado com sucesso.");
-                            }
-                        }
-                        else{
-                            System.out.print("User nao pertence a um projeto, nao faz sentido o intercambio");
-                        }
-                    }
+        	 if (usuario instanceof Aluno) {
+                 if (usuario.pessoa.name.equals(user)) {
+                	 try {
+                		 for(Project projeto: listaProjetos){
+                             if(projeto.find_user(user)){
+                                 System.out.print("o usuario pertence a um projeto.\nQual atividade vai ser feito o intercambio?\n");
+                                 int id = process();
+                                 Atividade activity = procuratividade(id);
+                                 if(activity != null){
+                                     activity.add_user(usuario);
+                                     System.out.println("Usuario adicionado com sucesso.");
+                                 }
+                             }
+                		 }
+                	 }catch(Exception e) {
+                         System.out.print("User nao pertence a um projeto, nao faz sentido o intercambio");
+
+                	 }
                 }
             }
         }

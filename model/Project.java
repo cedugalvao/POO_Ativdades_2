@@ -8,8 +8,7 @@ public class Project {
     private Integer bolsa;
     private double valor_bolsa;
     private String periodo_bolsa;
-    public Project(Dados dados,
-                   Integer bolsa, Double valor_bolsa, String periodobolsa, User user) {
+    public Project(Dados dados,Integer bolsa, Double valor_bolsa, String periodobolsa, User user) {
         super();
         this.dados = dados;
         this.bolsa = bolsa;
